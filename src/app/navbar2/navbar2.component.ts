@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar2.component.scss']
 })
 export class Navbar2Component implements OnInit {
-
+  isDarkTheme = false;
   constructor() { }
 
   ngOnInit() {

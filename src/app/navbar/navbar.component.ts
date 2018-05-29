@@ -10,6 +10,7 @@ import { map, tap } from 'rxjs/operators';
 })
 export class NavbarComponent {
   isHandset: boolean;
+  isDarkTheme = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       tap( result => this.isHandset = result.matches),
@@ -17,9 +18,5 @@ export class NavbarComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver) {}
-
-  click(event) {
-    console.log(this.isHandset);
-   }
 
   }
