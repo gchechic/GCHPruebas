@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map, startWith, tap } from 'rxjs/operators';
+import {
+  map,
+  startWith,
+  tap,
+  debounceTime,
+  distinctUntilChanged,
+  filter
+} from 'rxjs/operators';
 
 export class User {
   constructor(public simbolo: string, public name: string) {}
@@ -26,9 +33,12 @@ export class AutocompleteComponent implements OnInit {
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       // startWith<string | User>(''),
-      tap(value => console.log(value)),
-      // map(value => (typeof value === 'string' ? value : value.name)),
-      map(name => (name ? this.filter(name) : this.options.slice()))
+      // tap(value => console.log(value)),
+      filter(text => text.length > 0),
+      debounceTime(500),
+      distinctUntilChanged(), // map(value => (typeof value === 'string' ? value : value.name)),
+      map(name => (name ? this.filter(name) : this.options.slice())),
+      tap(value => console.log(value))
     );
   }
 
