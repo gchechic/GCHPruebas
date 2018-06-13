@@ -8,8 +8,22 @@ import { PostsComponent } from './posts/posts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule } from '@angular/material';
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatCardModule,
+  MatAutocompleteModule,
+  MatFormFieldModule,
+  MatInputModule
+} from '@angular/material';
 import { Navbar2Component } from './navbar2/navbar2.component';
+import { TodoComponent } from './todo/todo.component';
+import { FooterComponent } from './footer/footer.component';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +31,10 @@ import { Navbar2Component } from './navbar2/navbar2.component';
     HomeComponent,
     PostsComponent,
     NavbarComponent,
-    Navbar2Component
+    Navbar2Component,
+    TodoComponent,
+    FooterComponent,
+    AutocompleteComponent
   ],
   imports: [
     BrowserModule,
@@ -29,9 +46,14 @@ import { Navbar2Component } from './navbar2/navbar2.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
