@@ -17,13 +17,16 @@ import {
   MatCardModule,
   MatAutocompleteModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatDatepickerModule
 } from '@angular/material';
 import { Navbar2Component } from './navbar2/navbar2.component';
 import { TodoComponent } from './todo/todo.component';
 import { FooterComponent } from './footer/footer.component';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DatepickerViewsSelectionExample } from './datepicker-views-selection-example/datepicker-views-selection-example.component';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     Navbar2Component,
     TodoComponent,
     FooterComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    DatepickerViewsSelectionExample
   ],
   imports: [
     BrowserModule,
@@ -50,6 +54,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
     ReactiveFormsModule,
     FormsModule
   ],

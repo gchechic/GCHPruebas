@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, merge } from 'rxjs';
 import {
   map,
   startWith,
@@ -9,6 +9,7 @@ import {
   distinctUntilChanged,
   filter
 } from 'rxjs/operators';
+import * as Immutable from 'immutable';
 
 export class User {
   constructor(public simbolo: string, public name: string) {}
@@ -20,7 +21,8 @@ export class User {
   styleUrls: ['./autocomplete.component.scss']
 })
 export class AutocompleteComponent implements OnInit {
-  myControl = new FormControl();
+  myControlxNamex = new FormControl();
+  myControlSimbolo = new FormControl();
 
   options = [
     new User('M', 'Mary'),
@@ -31,15 +33,33 @@ export class AutocompleteComponent implements OnInit {
   filteredOptions: Observable<User[]>;
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
+    const obs1 = this.myControlxNamex.valueChanges.pipe(
       // startWith<string | User>(''),
       // tap(value => console.log(value)),
       filter(text => text.length > 0),
       debounceTime(500),
-      distinctUntilChanged(), // map(value => (typeof value === 'string' ? value : value.name)),
+      distinctUntilChanged(),
       map(name => (name ? this.filter(name) : this.options.slice())),
-      tap(value => console.log(value))
+      tap(
+        // map(value => (typeof value === 'string' ? value : value.name)),
+        value => console.log(value)
+      )
     );
+    const obs2 = this.myControlSimbolo.valueChanges.pipe(
+      // startWith<string | User>(''),
+      // tap(value => console.log(value)),
+      filter(text => text.length > 0),
+      debounceTime(500),
+      distinctUntilChanged(),
+      map(name => (name ? this.filter(name) : this.options.slice())),
+      tap(
+        // map(value => (typeof value === 'string' ? value : value.name)),
+        value => console.log(value)
+      )
+    );
+    const obs = merge(obs1, obs2);
+
+    this.filteredOptions = obs;
   }
 
   // ngOnInit() {

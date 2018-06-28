@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { DatepickerViewsSelectionExample } from './datepicker-views-selection-example/datepicker-views-selection-example.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'autocomplete',
     component: AutocompleteComponent
+  },
+  {
+    path: 'datepicker',
+    component: DatepickerViewsSelectionExample
   }
 ];
 
